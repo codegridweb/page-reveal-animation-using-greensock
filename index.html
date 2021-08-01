@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ITSALE MONTANA</title>
+		<link rel="stylesheet" href="css/styles.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="header">montana</h1>
+			<div class="overlay">
+				<div class="images">
+					<div class="img img-1"></div>
+					<div class="img img-2"></div>
+					<div class="img img-3"></div>
+					<div class="img img-4"></div>
+					<div class="img img-5"></div>
+					<div class="img img-6"></div>
+					<div class="img img-7"></div>
+					<div class="img img-8"></div>
+				</div>
+				<div class="navbar">
+					<div class="site-title">itsale montana</div>
+					<div class="site-icon">✴</div>
+					<div class="site-type">clothing brand</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			TweenMax.staggerFrom(
+				".navbar > div",
+				0.8,
+				{
+					x: "-80",
+					opacity: 0,
+					ease: Power3.easeOut,
+					delay: 1,
+				},
+				0.08
+			);
+
+			TweenMax.staggerFrom(
+				".images > div",
+				0.8,
+				{
+					x: "-80",
+					opacity: 0,
+					ease: Power3.easeOut,
+					delay: 1,
+				},
+				0.08
+			);
+
+			TweenMax.staggerTo(
+				".navbar > div",
+				0.8,
+				{
+					x: "80",
+					opacity: 0,
+					ease: Power3.easeOut,
+					delay: 4,
+				},
+				0.04
+			);
+
+			TweenMax.staggerTo(
+				".images > div",
+				0.4,
+				{
+					scale: "0",
+					opacity: 0,
+					ease: Power3.easeOut,
+					delay: 4,
+				},
+				0.04
+			);
+
+			TweenMax.to(".overlay", 1.2, {
+				top: "-100%",
+				ease: Expo.easeOut,
+				delay: 5,
+			});
+
+			var textWrapper = document.querySelector(".header");
+			textWrapper.innerHTML = textWrapper.textContent.replace(
+				/\S/g,
+				"<span class='letter'>$&</span>"
+			);
+
+			anime.timeline().add({
+				targets: ".header .letter",
+				translateY: [100, 0],
+				translateZ: 0,
+				easing: "easeOutExpo",
+				duration: 2000,
+				delay: (el, i) => 4800 + 40 * i,
+			});
+		</script>
+	</body>
+</html>
